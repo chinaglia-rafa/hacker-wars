@@ -6,6 +6,6 @@ Projeto desenvolvido para a disciplina de Estrutura de Dados
 
 
 @author Marcelo Eduardo R. <marceloer2011@gmail.com>
- Why i can't edit
 
- 
+---
+Convenções de nomes [aqui](https://github.com/chinaglia-rafa/hacker-wars/blob/master/naming-conventions.md).
