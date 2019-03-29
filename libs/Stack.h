@@ -8,7 +8,7 @@
 #include "standard_deck.h"
 
 //	Struct que representa cada elemento da pilha.
-//	Dentro de cada um destes elementos Item, haverá
+//	Dentro de cada um destes elementos Item, havera
 //	uma carta.
 struct Item {
 	struct Card card;
@@ -39,7 +39,7 @@ struct Stack stk_make_stack() {
 /**
 **    Adiciona um card a pilha de cards
 **    @param struct Card: o card a ser empilhado
-**    @param struct* Stack: ponteiro para a pilha onde o card deverá ser inserido
+**    @param struct* Stack: ponteiro para a pilha onde o card devera ser inserido
 **
 **    @author Rafael Chinaglia <chinaglia.rafa@gmail.com>
 */
@@ -47,14 +47,14 @@ void stk_push(struct Card card, struct Stack* stack) {
 	if(stack == NULL || !crd_is_valid(card))
 		return;
 
-	//	Cria um novo espaço na memória para o novo Item
+	//	Cria um novo espaco na memoria para o novo Item
 	struct Item* new_item = (struct Item*)malloc(sizeof(struct Item));
 	if (new_item == NULL)
 		return;
 
 	new_item->card = card;
 
-	//	Verifica se a pilha está vazia
+	//	Verifica se a pilha esta vazia
 	if (stack->top == NULL) {
 		stack->top = new_item;
 		stack->bottom = new_item;
@@ -67,7 +67,7 @@ void stk_push(struct Card card, struct Stack* stack) {
 
 /**
 **    Remove o card do topo da pilha
-**    @param struct* Stack: ponteiro para a pilha de onde o card será removido
+**    @param struct* Stack: ponteiro para a pilha de onde o card sera removido
 **
 ** 	  @return struct Card: card retirado
 **
@@ -77,12 +77,12 @@ struct Card stk_pop(struct Stack* stack) {
 	if (stack == NULL || stack->top == NULL)
 		return;
 
-	//	Faz uma cópia do card que está no topo
+	//	Faz uma copia do card que esta no topo
 	struct Card card_on_top = (stack->top)->card;
-	//	Faz uma cópia do endereço do topo (para dar free())
+	//	Faz uma copia do endereco do topo (para dar free())
 	struct Item* item_to_be_freed = stack->top;
 
-	//	Caso bottom e top apontem para o mesmo Item, a pilha terá apenas
+	//	Caso bottom e top apontem para o mesmo Item, a pilha tera apenas
 	//	um elemento, e depois de removido, bottom deverá ser NULL
 	if (stack->bottom == stack->top)
 		stack->bottom = NULL;
@@ -95,10 +95,10 @@ struct Card stk_pop(struct Stack* stack) {
 }
 
 /**
-**    Verifica se a pilha está vazia
+**    Verifica se a pilha esta vazia
 **    @param struct Stack: pilha a ser analisada
 **
-** 	  @return short: Sim ou não
+** 	  @return short: Sim ou nao
 **
 **    @author Rafael Chinaglia <chinaglia.rafa@gmail.com>
 */

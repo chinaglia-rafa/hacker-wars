@@ -10,15 +10,15 @@
 #define FORMAT_CAP 2
 
 /**
-**    Converte um int no intervalo [1,5] para o label da posição no card
-**    @param int pos: posição no intervalo [1,5]
+**    Converte um int no intervalo [1,5] para o label da posicao no card
+**    @param int pos: posicao no intervalo [1,5]
 **	  @param int format: FORMAT_LOWER=0, FORMAT_UPPER=1, FORMAT_CAP=2
 **
-**	  @return char*: label da posição
+**	  @return char*: label da posicao
 **
 **	  Uso:
 **		hlp_label_at_pos(1, FORMAT_UPPER); // retorna "PODER DESTRUTIVO"
-**		hlp_label_at_pos(3, FORMAT_CAP); // retorna "Eficiência"
+**		hlp_label_at_pos(3, FORMAT_CAP); // retorna "Eficiencia"
 **
 **    @author Rafael Chinaglia <chinaglia.rafa@gmail.com>
 */
@@ -30,13 +30,13 @@ const char *hlp_label_at_pos(int pos, int format) {
 			else if (format == FORMAT_UPPER) return "PODER DESTRUTIVO";
 			else if (format == FORMAT_CAP)   return "Poder destrutivo";
 		case 2:
-			if 		(format == FORMAT_LOWER) return "segurança";
-			else if (format == FORMAT_UPPER) return "SEGURANÇA";
-			else if (format == FORMAT_CAP)   return "Segurança";
+			if 		(format == FORMAT_LOWER) return "seguranca";
+			else if (format == FORMAT_UPPER) return "SEGURANCA";
+			else if (format == FORMAT_CAP)   return "Seguranca";
 		case 3:
-			if 		(format == FORMAT_LOWER) return "eficiência";
-			else if (format == FORMAT_UPPER) return "EFICIÊNCIA";
-			else if (format == FORMAT_CAP)   return "Eficiência";
+			if 		(format == FORMAT_LOWER) return "eficiencia";
+			else if (format == FORMAT_UPPER) return "EFICIENCIA";
+			else if (format == FORMAT_CAP)   return "Eficiencia";
 		case 4:
 			if 		(format == FORMAT_LOWER) return "dados afetados";
 			else if (format == FORMAT_UPPER) return "DADOS AFETADOS";
