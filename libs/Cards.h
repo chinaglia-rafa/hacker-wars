@@ -19,8 +19,8 @@ struct Card {
 **    Cria uma nova struct do tipo Card e a retorna com os dados preenchidos
 **    @param char *name: nome do card (tam. 25)
 **    @param float destructive_power: poder destrutivo do card
-**    @param float security: nivel de segurança do card
-**    @param float efficiency: nivel de eficiência do card
+**    @param float security: nivel de seguranï¿½a do card
+**    @param float efficiency: nivel de eficiï¿½ncia do card
 **    @param float affected_data: quantidade de Tb afetados pelo card
 **    @param float stealth: furtividade do card
 **
@@ -41,10 +41,10 @@ struct Card crd_make_card(char *name, float destructive_power, float security, f
 }
 
 /**
-**    Verifica se um card está corretamente preenchido
+**    Verifica se um card estï¿½ corretamente preenchido
 **    @param struct Card: card a ser verificado
 **
-**	  @return Boolean: 1 se estiver correto, 0 caso contrário
+**	  @return Boolean: 1 se estiver correto, 0 caso contrï¿½rio
 **
 **    @author Rafael Chinaglia <chinaglia.rafa@gmail.com>
 */
@@ -63,7 +63,7 @@ short crd_is_valid(struct Card card) {
 **    @author Rafael Chinaglia <chinaglia.rafa@gmail.com>
 */
 void crd_print_card(struct Card card) {
-	//	Verifica se o card enviado está corretamente formatado
+	//	Verifica se o card enviado estï¿½ corretamente formatado
 	if (!crd_is_valid(card)) {
 			printf("\nERRO: Card vazio ou com dados incompletos! Verifique os dados.\n");
 			return;
@@ -73,9 +73,9 @@ void crd_print_card(struct Card card) {
 	printf("|   %25s  |\n", card.name);
 	printf("|______________________________|\n");
 	printf("|                              |\n");
-	printf("| [1]      Destruição:    %3.0f%% |\n", card.destructive_power);
-	printf("| [2]       Segurança:    %3.0f%% |\n", card.security);
-	printf("| [3]      Eficiência:     %2.1f |\n", card.efficiency);
+	printf("| [1]      DestruiÃ§Ã£o:    %3.0f%% |\n", card.destructive_power);
+	printf("| [2]       SeguranÃ§a:    %3.0f%% |\n", card.security);
+	printf("| [3]      EficiÃªncia:     %2.1f |\n", card.efficiency);
 	printf("| [4]  Dados afetados: %4.0f Tb |\n", card.affected_data);
 	printf("| [5]     Furtividade:    %3.0f%% |\n", card.stealth);
 	printf("|______________________________|\n");
@@ -83,14 +83,14 @@ void crd_print_card(struct Card card) {
 }
 
 /**
-**    Retorna o valor da característica na posição escolhida
+**    Retorna o valor da caracterï¿½stica na posiï¿½ï¿½o escolhida
 **    @param struct Card: card escolhido
-**    @param int pos: posição da característica escolhida no card [1, 5]
+**    @param int pos: posiï¿½ï¿½o da caracterï¿½stica escolhida no card [1, 5]
 **
 **    @author Rafael Chinaglia <chinaglia.rafa@gmail.com>
 */
 float crd_get_value_at(struct Card card, int pos) {
-	//	Verifica se o card enviado está corretamente formatado e se a posição está no range
+	//	Verifica se o card enviado estï¿½ corretamente formatado e se a posiï¿½ï¿½o estï¿½ no range
 	if (!crd_is_valid(card)) {
 		printf("\nERRO: Card vazio ou com dados incompletos! Verifique os dados.\n");
 		return;
