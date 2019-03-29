@@ -93,10 +93,10 @@ float crd_get_value_at(struct Card card, int pos) {
 	//	Verifica se o card enviado esta corretamente formatado e se a posicao esta no range
 	if (!crd_is_valid(card)) {
 		printf("\nERRO: Card vazio ou com dados incompletos! Verifique os dados.\n");
-		return;
+		return -1;
 	} else if (pos > 5 || pos < 1) {
 		printf("\nERRO: Pos out of range.\n");
-		return;
+		return -1;
 	}
 
 	switch (pos) {

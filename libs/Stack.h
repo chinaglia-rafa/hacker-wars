@@ -75,7 +75,8 @@ void stk_push(struct Card card, struct Stack* stack) {
 */
 struct Card stk_pop(struct Stack* stack) {
 	if (stack == NULL || stack->top == NULL)
-		return;
+	//	TODO: verificar se isso da trabalho
+		return struct Card;
 
 	//	Faz uma copia do card que esta no topo
 	struct Card card_on_top = (stack->top)->card;
