@@ -20,7 +20,7 @@ struct Card {
 **    @param char *name: nome do card (tam. 25)
 **    @param float destructive_power: poder destrutivo do card
 **    @param float security: nivel de segurança do card
-**    @param float efficiency: nivel de eficiencia do card
+**    @param float efficiency: nivel de eficiência do card
 **    @param float affected_data: quantidade de Tb afetados pelo card
 **    @param float stealth: furtividade do card
 **
@@ -36,7 +36,7 @@ struct Card crd_make_card(char *name, float destructive_power, float security, f
 	new_card.efficiency = efficiency;
 	new_card.affected_data = affected_data;
 	new_card.stealth = stealth;
-	
+
 	return new_card;
 }
 
@@ -49,7 +49,7 @@ struct Card crd_make_card(char *name, float destructive_power, float security, f
 **    @author Rafael Chinaglia <chinaglia.rafa@gmail.com>
 */
 short crd_is_valid(struct Card card) {
-	if (strcmp(card.name, "") == 0 || card.destructive_power < 0 || card.security < 0 || 
+	if (strcmp(card.name, "") == 0 || card.destructive_power < 0 || card.security < 0 ||
 		card.efficiency <= 0 || card.affected_data < 0 || card.stealth < 0) {
 			return 0;
 	}
@@ -79,7 +79,7 @@ void crd_print_card(struct Card card) {
 	printf("| [4]  Dados afetados: %4.0f Tb |\n", card.affected_data);
 	printf("| [5]     Furtividade:    %3.0f%% |\n", card.stealth);
 	printf("|______________________________|\n");
-	
+
 }
 
 /**
@@ -98,7 +98,7 @@ float crd_get_value_at(struct Card card, int pos) {
 		printf("\nERRO: Pos out of range.\n");
 		return;
 	}
-	
+
 	switch (pos) {
 		case 1:
 			return card.destructive_power;
@@ -134,5 +134,3 @@ void crd_debug_card(struct Card card) {
 	printf("  card.stealth = %.2f%%\n", card.stealth);
 	printf("====================\n");
 }
-
-

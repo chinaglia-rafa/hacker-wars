@@ -30,7 +30,7 @@ const char *hlp_label_at_pos(int pos, int format) {
 			else if (format == FORMAT_UPPER) return "PODER DESTRUTIVO";
 			else if (format == FORMAT_CAP)   return "Poder destrutivo";
 		case 2:
-			if 		(format == FORMAT_LOWER) return "segurança";
+			if 		(format == FORMAT_LOWER) return "segurançaa";
 			else if (format == FORMAT_UPPER) return "SEGURANÇA";
 			else if (format == FORMAT_CAP)   return "Segurança";
 		case 3:

@@ -8,7 +8,7 @@
 #include "standard_deck.h"
 
 //	Struct que representa cada elemento da pilha.
-//	Dentro de cada um destes elementos Item, haver·
+//	Dentro de cada um destes elementos Item, haver√°
 //	uma carta.
 struct Item {
 	struct Card card;
@@ -32,29 +32,29 @@ struct Stack stk_make_stack() {
 	struct Stack new_stack;
 	new_stack.top = NULL;
 	new_stack.bottom = NULL;
-	
+
 	return new_stack;
 }
 
 /**
 **    Adiciona um card a pilha de cards
 **    @param struct Card: o card a ser empilhado
-**    @param struct* Stack: ponteiro para a pilha onde o card dever· ser inserido
+**    @param struct* Stack: ponteiro para a pilha onde o card dever√° ser inserido
 **
 **    @author Rafael Chinaglia <chinaglia.rafa@gmail.com>
 */
 void stk_push(struct Card card, struct Stack* stack) {
 	if(stack == NULL || !crd_is_valid(card))
 		return;
-	
-	//	Cria um novo espaÁo na memÛria para o novo Item
+
+	//	Cria um novo espa√ßo na mem√≥ria para o novo Item
 	struct Item* new_item = (struct Item*)malloc(sizeof(struct Item));
 	if (new_item == NULL)
 		return;
-		
+
 	new_item->card = card;
-	
-	//	Verifica se a pilha est· vazia	
+
+	//	Verifica se a pilha est√° vazia
 	if (stack->top == NULL) {
 		stack->top = new_item;
 		stack->bottom = new_item;
@@ -67,7 +67,7 @@ void stk_push(struct Card card, struct Stack* stack) {
 
 /**
 **    Remove o card do topo da pilha
-**    @param struct* Stack: ponteiro para a pilha de onde o card ser· removido
+**    @param struct* Stack: ponteiro para a pilha de onde o card ser√° removido
 **
 ** 	  @return struct Card: card retirado
 **
@@ -76,29 +76,29 @@ void stk_push(struct Card card, struct Stack* stack) {
 struct Card stk_pop(struct Stack* stack) {
 	if (stack == NULL || stack->top == NULL)
 		return;
-	
-	//	Faz uma cÛpia do card que est· no topo
+
+	//	Faz uma c√≥pia do card que est√° no topo
 	struct Card card_on_top = (stack->top)->card;
-	//	Faz uma cÛpia do endereÁo do topo (para dar free())
+	//	Faz uma c√≥pia do endere√ßo do topo (para dar free())
 	struct Item* item_to_be_freed = stack->top;
-	
-	//	Caso bottom e top apontem para o mesmo Item, a pilha ter· apenas
-	//	um elemento, e depois de removido, bottom dever· ser NULL
+
+	//	Caso bottom e top apontem para o mesmo Item, a pilha ter√° apenas
+	//	um elemento, e depois de removido, bottom dever√° ser NULL
 	if (stack->bottom == stack->top)
 		stack->bottom = NULL;
-		
+
 	stack->top = (stack->top)->next;
-	
+
 	free(item_to_be_freed);
-	
+
 	return card_on_top;
 }
 
 /**
-**    Verifica se a pilha est· vazia
+**    Verifica se a pilha est√° vazia
 **    @param struct Stack: pilha a ser analisada
 **
-** 	  @return short: Sim ou n„o
+** 	  @return short: Sim ou n√£o
 **
 **    @author Rafael Chinaglia <chinaglia.rafa@gmail.com>
 */
