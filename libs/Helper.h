@@ -1,6 +1,6 @@
-/**
+﻿/**
 **	Sigla: hlp
-**	Lib responsavel por conter fun��es auxiliares, de convers�o e etc
+**	Lib responsavel por conter funções auxiliares, de conversão e etc
 **
 */
 
@@ -10,15 +10,15 @@
 #define FORMAT_CAP 2
 
 /**
-**    Converte um int no intervalo [1,5] para o label da posi��o no card
-**    @param int pos: posi��o no intervalo [1,5]
+**    Converte um int no intervalo [1,5] para o label da posição no card
+**    @param int pos: posição no intervalo [1,5]
 **	  @param int format: FORMAT_LOWER=0, FORMAT_UPPER=1, FORMAT_CAP=2
 **
-**	  @return char*: label da posi��o
+**	  @return char*: label da posição
 **
 **	  Uso:
 **		hlp_label_at_pos(1, FORMAT_UPPER); // retorna "PODER DESTRUTIVO"
-**		hlp_label_at_pos(3, FORMAT_CAP); // retorna "Efici�ncia"
+**		hlp_label_at_pos(3, FORMAT_CAP); // retorna "Eficiência"
 **
 **    @author Rafael Chinaglia <chinaglia.rafa@gmail.com>
 */
