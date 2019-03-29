@@ -1,4 +1,4 @@
-/**
+﻿/**
 **	Sigla: crd
 **	Lib responsavel por gerenciar as estruturas e funcoes dos cards
 **
@@ -19,8 +19,8 @@ struct Card {
 **    Cria uma nova struct do tipo Card e a retorna com os dados preenchidos
 **    @param char *name: nome do card (tam. 25)
 **    @param float destructive_power: poder destrutivo do card
-**    @param float security: nivel de seguran�a do card
-**    @param float efficiency: nivel de efici�ncia do card
+**    @param float security: nivel de segurança do card
+**    @param float efficiency: nivel de eficiência do card
 **    @param float affected_data: quantidade de Tb afetados pelo card
 **    @param float stealth: furtividade do card
 **
@@ -41,10 +41,10 @@ struct Card crd_make_card(char *name, float destructive_power, float security, f
 }
 
 /**
-**    Verifica se um card est� corretamente preenchido
+**    Verifica se um card está corretamente preenchido
 **    @param struct Card: card a ser verificado
 **
-**	  @return Boolean: 1 se estiver correto, 0 caso contr�rio
+**	  @return Boolean: 1 se estiver correto, 0 caso contrário
 **
 **    @author Rafael Chinaglia <chinaglia.rafa@gmail.com>
 */
@@ -63,7 +63,7 @@ short crd_is_valid(struct Card card) {
 **    @author Rafael Chinaglia <chinaglia.rafa@gmail.com>
 */
 void crd_print_card(struct Card card) {
-	//	Verifica se o card enviado est� corretamente formatado
+	//	Verifica se o card enviado está corretamente formatado
 	if (!crd_is_valid(card)) {
 			printf("\nERRO: Card vazio ou com dados incompletos! Verifique os dados.\n");
 			return;
@@ -83,14 +83,14 @@ void crd_print_card(struct Card card) {
 }
 
 /**
-**    Retorna o valor da caracter�stica na posi��o escolhida
+**    Retorna o valor da característica na posição escolhida
 **    @param struct Card: card escolhido
-**    @param int pos: posi��o da caracter�stica escolhida no card [1, 5]
+**    @param int pos: posição da característica escolhida no card [1, 5]
 **
 **    @author Rafael Chinaglia <chinaglia.rafa@gmail.com>
 */
 float crd_get_value_at(struct Card card, int pos) {
-	//	Verifica se o card enviado est� corretamente formatado e se a posi��o est� no range
+	//	Verifica se o card enviado está corretamente formatado e se a posição está no range
 	if (!crd_is_valid(card)) {
 		printf("\nERRO: Card vazio ou com dados incompletos! Verifique os dados.\n");
 		return;
