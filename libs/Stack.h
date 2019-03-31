@@ -75,8 +75,7 @@ void stk_push(struct Card card, struct Stack* stack) {
 */
 struct Card stk_pop(struct Stack* stack) {
 	if (stack == NULL || stack->top == NULL)
-	//	TODO: verificar se isso da trabalho
-		return struct Card;
+		exit(0);
 
 	//	Faz uma copia do card que esta no topo
 	struct Card card_on_top = (stack->top)->card;
@@ -138,4 +137,36 @@ void stk_stack_deck(struct Stack* stack) {
 	for (i = 0; i < STANDARD_DECK.deck_size; i++) {
 		stk_push(STANDARD_DECK.cards[i], stack);
 	}
+}
+
+/**
+**    Conta o numero de elementos em uma pilha
+**    @param struct Stack*: ponteiro para a pilha
+**
+**		@return int: numero de elementos na pilha
+**
+**    @author Rafael Chinaglia <chinaglia.rafa@gmail.com>
+*/
+int stk_count(struct Stack* stack) {
+	int i = 0;
+	struct Item* seeker = stack->top;
+	while (seeker != NULL) {
+		i++;
+		seeker = seeker->next;
+	}
+	return i;
+}
+
+/**
+**    Embaralha uma stack em uma nova ordem aleatoria
+**    @param struct Stack*: ponteiro para a pilha a ser embaralhada
+**
+**    @author Rafael Chinaglia <chinaglia.rafa@gmail.com>
+*/
+void stk_shuffle(struct Stack* stack) {
+	struct Stack deck;
+	stk_stack_deck(&deck);
+	int cards_remaining = stk_count(&deck);
+
+
 }
