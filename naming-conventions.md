@@ -1,6 +1,7 @@
 # Naming Conventions
 
-
+## O que não fazer
+ *Usar caracteres especiais em "printf"(parênteses estão inclusos)
 ## Nomes de arquivos
 + Arquivos .c
   * Apenas letras minúsculas

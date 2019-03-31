@@ -11,7 +11,7 @@ void main() {
 
 	struct Card hand[3];
 	hand[0] = crd_make_card("Enviar virus", 85, 20, 3, 500, 60);
-	hand[1] = crd_make_card("Aapagando Las Luces (EMP)", 30, 50, 5, 1000, 0);
+	hand[1] = crd_make_card("Aapagando Las Luces - EMP", 30, 50, 5, 1000, 0);
 	hand[2] = crd_make_card("Be The ONE", 100, 100, 5, 1000, 100);
 
 	//	Empilha todo o deck padrao (contido em standard_deck.h)
