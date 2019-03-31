@@ -79,7 +79,53 @@ void crd_print_card(struct Card card) {
 	printf("| [4]  Dados afetados: %4.0f Tb |\n", card.affected_data);
 	printf("| [5]     Furtividade:    %3.0f%% |\n", card.stealth);
 	printf("|______________________________|\n");
+}
 
+/**
+**    Imprime um card e seus dados na tela (32x11)
+**    @param struct Card: card a ser impresso
+**
+**    @author Rafael Chinaglia <chinaglia.rafa@gmail.com>
+*/
+void crd_print_2_cards(struct Card card1, struct Card card2) {
+	//	Verifica se o card enviado está corretamente formatado
+	if (!crd_is_valid(card1) || !crd_is_valid(card2)) {
+			printf("\nERRO: Card vazio ou com dados incompletos! Verifique os dados.\n");
+			return;
+	}
+	printf(" ______________________________ ");
+	printf("          ");
+	printf(" ______________________________ \n"); // break-line
+	printf("/                              \\");
+	printf("          ");
+	printf("/                              \\\n"); // break-line
+	printf("|   %25s  |", card1.name);
+	printf("          ");
+	printf("|   %25s  |\n", card2.name);
+	printf("|______________________________|");
+	printf("          ");
+	printf("|______________________________|\n");
+	printf("|                              |");
+	printf("          ");
+	printf("|                              |\n");
+	printf("| [1]      Destruicao:    %3.0f%% |", card1.destructive_power);
+	printf("          ");
+	printf("| [1]      Destruicao:    %3.0f%% |\n", card2.destructive_power);
+	printf("| [2]       Seguranca:    %3.0f%% |", card1.security);
+	printf("          ");
+	printf("| [2]       Seguranca:    %3.0f%% |\n", card2.security);
+	printf("| [3]      Eficiencia:     %2.1f |", card1.efficiency);
+	printf("    VS    ");
+	printf("| [3]      Eficiencia:     %2.1f |\n", card2.efficiency);
+	printf("| [4]  Dados afetados: %4.0f Tb |", card1.affected_data);
+	printf("          ");
+	printf("| [4]  Dados afetados: %4.0f Tb |\n", card2.affected_data);
+	printf("| [5]     Furtividade:    %3.0f%% |", card1.stealth);
+	printf("          ");
+	printf("| [5]     Furtividade:    %3.0f%% |\n", card2.stealth);
+	printf("|______________________________|");
+	printf("          ");
+	printf("|______________________________|\n");
 }
 
 /**
