@@ -44,8 +44,11 @@ struct Stack stk_make_stack() {
 **    @author Rafael Chinaglia <chinaglia.rafa@gmail.com>
 */
 void stk_push(struct Card card, struct Stack* stack) {
-	if(stack == NULL || !crd_is_valid(card))
+	if(stack == NULL || !crd_is_valid(card)) {
+		printf("quebrado");
 		return;
+	}
+
 
 	//	Cria um novo espaco na memoria para o novo Item
 	struct Item* new_item = (struct Item*)malloc(sizeof(struct Item));
@@ -162,11 +165,38 @@ int stk_count(struct Stack* stack) {
 **    @param struct Stack*: ponteiro para a pilha a ser embaralhada
 **
 **    @author Rafael Chinaglia <chinaglia.rafa@gmail.com>
+**		TODO: dinamizar o deck. Por enquanto standar_deck esta fixo
 */
 void stk_shuffle(struct Stack* stack) {
-	struct Stack deck;
-	stk_stack_deck(&deck);
-	int cards_remaining = stk_count(&deck);
-
-
+	srand(time(NULL));
+	*stack = stk_make_stack();
+	//	Carrega a pilha de cartas, que sera usada como LISTA
+	struct Stack deck_as_list = stk_make_stack();
+	stk_stack_deck(&deck_as_list);
+	int cards_remaining = stk_count(&deck_as_list);
+	int chosen_card = 0, i = 0;
+	//	Repete o processo de empilhamento enquanto houverem cards no deck
+	while (cards_remaining > 0) {
+		if (cards_remaining > 0)
+			chosen_card = rand() % cards_remaining;
+		else
+			 chosen_card = 0;
+		struct Item *seeker = deck_as_list.top;
+		struct Item *previous = NULL;
+		for (i = 0; i < chosen_card; i++) {
+			previous = seeker;
+			seeker = seeker->next;
+		}
+		stk_push(seeker->card, stack);
+		if (seeker == deck_as_list.top) {
+			deck_as_list.top = (deck_as_list.top)->next;
+		}	else if (seeker->next == NULL) {
+			if (previous != NULL)
+				previous->next = NULL;
+		}	else {
+			if (previous != NULL)
+				previous->next = seeker->next;
+		}
+		cards_remaining--;
+	}
 }

@@ -6,6 +6,9 @@
 
 #include <string.h>
 
+#define CRD_FULL_CARDS 0
+#define CRD_NAME_ONLY 1
+
 struct Card {
 	char name[25];
 	float destructive_power;
@@ -65,7 +68,7 @@ short crd_is_valid(struct Card card) {
 void crd_print_card(struct Card card) {
 	//	Verifica se o card enviado está corretamente formatado
 	if (!crd_is_valid(card)) {
-			printf("\nERRO: Card vazio ou com dados incompletos! Verifique os dados.\n");
+			printf("\n(crd_print_card) ERRO: Card vazio ou com dados incompletos! Verifique os dados.\n");
 			return;
 	}
 	printf(" ______________________________ \n");
@@ -82,16 +85,35 @@ void crd_print_card(struct Card card) {
 }
 
 /**
-**    Imprime um card e seus dados na tela (32x11)
-**    @param struct Card: card a ser impresso
+**    Imprime dois cards e seus dados na tela (32x11)
+**    @param struct Card: cards 1 a ser impresso
+**    @param struct Card: cards 2 a ser impresso
+**    @param short: modo de impressao (CRD_FULL_CARDS, CRD_NAME_ONLY)
 **
 **    @author Rafael Chinaglia <chinaglia.rafa@gmail.com>
 */
-void crd_print_2_cards(struct Card card1, struct Card card2) {
+void crd_print_2_cards(struct Card card1, struct Card card2, short print_mode) {
 	//	Verifica se o card enviado está corretamente formatado
 	if (!crd_is_valid(card1) || !crd_is_valid(card2)) {
-			printf("\nERRO: Card vazio ou com dados incompletos! Verifique os dados.\n");
+			printf("\n(crd_print_2_cards) ERRO: Card vazio ou com dados incompletos! Verifique os dados.\n");
 			return;
+	}
+
+	if (print_mode == CRD_NAME_ONLY) {
+		printf(" ______________________________ ");
+		printf("          ");
+		printf(" ______________________________ \n"); // break-line
+		printf("/                              \\");
+		printf("          ");
+		printf("/                              \\\n"); // break-line
+		printf("|   %25s  |", card1.name);
+		printf("          ");
+		printf("|   %25s  |\n", card2.name);
+		printf("|______________________________|");
+		printf("          ");
+		printf("|______________________________|\n");
+
+		return;
 	}
 	printf(" ______________________________ ");
 	printf("          ");
@@ -115,7 +137,7 @@ void crd_print_2_cards(struct Card card1, struct Card card2) {
 	printf("          ");
 	printf("| [2]       Seguranca:    %3.0f%% |\n", card2.security);
 	printf("| [3]      Eficiencia:     %2.1f |", card1.efficiency);
-	printf("    VS    ");
+	printf("          ");
 	printf("| [3]      Eficiencia:     %2.1f |\n", card2.efficiency);
 	printf("| [4]  Dados afetados: %4.0f Tb |", card1.affected_data);
 	printf("          ");
@@ -123,6 +145,103 @@ void crd_print_2_cards(struct Card card1, struct Card card2) {
 	printf("| [5]     Furtividade:    %3.0f%% |", card1.stealth);
 	printf("          ");
 	printf("| [5]     Furtividade:    %3.0f%% |\n", card2.stealth);
+	printf("|______________________________|");
+	printf("          ");
+	printf("|______________________________|\n");
+}
+
+/**
+**    Imprime tres card e seus dados na tela (32x11)
+**
+**    @param struct Card: card 1 a ser impresso
+**    @param struct Card: card 2 a ser impresso
+**    @param struct Card: card 3 a ser impresso
+**    @param short: modo de impressao (CRD_FULL_CARDS, CRD_NAME_ONLY)
+**
+**    @author Rafael Chinaglia <chinaglia.rafa@gmail.com>
+*/
+void crd_print_3_cards(struct Card card1, struct Card card2, struct Card card3, short print_mode) {
+	//	Verifica se o card enviado está corretamente formatado
+	if (!crd_is_valid(card1) || !crd_is_valid(card2) || !crd_is_valid(card3)) {
+			printf("\n(crd_print_3_cards) ERRO: Card vazio ou com dados incompletos! Verifique os dados.\n");
+			return;
+	}
+	if (print_mode == CRD_NAME_ONLY) {
+		printf(" ______________________________ ");
+		printf("          ");
+		printf(" ______________________________ ");
+		printf("          ");
+		printf(" ______________________________ \n"); // break-line
+		printf("/                              \\");
+		printf("          ");
+		printf("/                              \\");
+		printf("          ");
+		printf("/                              \\\n"); // break-line
+		printf("|   %25s  |", card1.name);
+		printf("          ");
+		printf("|   %25s  |", card2.name);
+		printf("          ");
+		printf("|   %25s  |\n", card3.name);
+		printf("|______________________________|");
+		printf("          ");
+		printf("|______________________________|");
+		printf("          ");
+		printf("|______________________________|\n");
+		return;
+	}
+
+	printf(" ______________________________ ");
+	printf("          ");
+	printf(" ______________________________ ");
+	printf("          ");
+	printf(" ______________________________ \n"); // break-line
+	printf("/                              \\");
+	printf("          ");
+	printf("/                              \\");
+	printf("          ");
+	printf("/                              \\\n"); // break-line
+	printf("|   %25s  |", card1.name);
+	printf("          ");
+	printf("|   %25s  |", card2.name);
+	printf("          ");
+	printf("|   %25s  |\n", card3.name);
+	printf("|______________________________|");
+	printf("          ");
+	printf("|______________________________|");
+	printf("          ");
+	printf("|______________________________|\n");
+	printf("|                              |");
+	printf("          ");
+	printf("|                              |");
+	printf("          ");
+	printf("|                              |\n");
+	printf("| [1]      Destruicao:    %3.0f%% |", card1.destructive_power);
+	printf("          ");
+	printf("| [1]      Destruicao:    %3.0f%% |", card2.destructive_power);
+	printf("          ");
+	printf("| [1]      Destruicao:    %3.0f%% |\n", card3.destructive_power);
+	printf("| [2]       Seguranca:    %3.0f%% |", card1.security);
+	printf("          ");
+	printf("| [2]       Seguranca:    %3.0f%% |", card2.security);
+	printf("          ");
+	printf("| [2]       Seguranca:    %3.0f%% |\n", card3.security);
+	printf("| [3]      Eficiencia:     %2.1f |", card1.efficiency);
+	printf("          ");
+	printf("| [3]      Eficiencia:     %2.1f |", card2.efficiency);
+	printf("          ");
+	printf("| [3]      Eficiencia:     %2.1f |\n", card3.efficiency);
+	printf("| [4]  Dados afetados: %4.0f Tb |", card1.affected_data);
+	printf("          ");
+	printf("| [4]  Dados afetados: %4.0f Tb |", card2.affected_data);
+	printf("          ");
+	printf("| [4]  Dados afetados: %4.0f Tb |\n", card3.affected_data);
+	printf("| [5]     Furtividade:    %3.0f%% |", card1.stealth);
+	printf("          ");
+	printf("| [5]     Furtividade:    %3.0f%% |", card2.stealth);
+	printf("          ");
+	printf("| [5]     Furtividade:    %3.0f%% |\n", card3.stealth);
+	printf("|______________________________|");
+	printf("          ");
 	printf("|______________________________|");
 	printf("          ");
 	printf("|______________________________|\n");
@@ -138,7 +257,7 @@ void crd_print_2_cards(struct Card card1, struct Card card2) {
 float crd_get_value_at(struct Card card, int pos) {
 	//	Verifica se o card enviado esta corretamente formatado e se a posicao esta no range
 	if (!crd_is_valid(card)) {
-		printf("\nERRO: Card vazio ou com dados incompletos! Verifique os dados.\n");
+		printf("\n(crd_get_value_at) ERRO: Card vazio ou com dados incompletos! Verifique os dados.\n");
 		return -1;
 	} else if (pos > 5 || pos < 1) {
 		printf("\nERRO: Pos out of range.\n");

@@ -19,7 +19,7 @@ void stddk_load_standard_deck() {
 	STANDARD_DECK.cards[5] = crd_make_card("Usar VPN", 5.00, 85.00, 2.9, 400, 87.00);
 	STANDARD_DECK.cards[6] = crd_make_card("Forca bruta", 40.00, 25.00, 0.1, 850, 5.00);
 	STANDARD_DECK.cards[7] = crd_make_card("Engenharia Social", 90.00, 0.00, 0.4, 950, 85.00);
-	STANDARD_DECK.cards[8] = crd_make_card("Aapagando Las Luces (EMP)", 30.00, 50.00, 5.0, 1000, 0.00);
+	STANDARD_DECK.cards[8] = crd_make_card("Aapagando Las Luces EMP", 30.00, 50.00, 5.0, 1000, 0.00);
 	STANDARD_DECK.cards[9] = crd_make_card("Hackear terminal", 63.00, 40.00, 2.0, 350, 70.00);
 	STANDARD_DECK.cards[10] = crd_make_card("Hackear servidor", 73.00, 30.00, 1.4, 550, 53.00);
 	STANDARD_DECK.cards[11] = crd_make_card("Puxar das tomadas", 0.00, 100.00, 0.1, 1000, 0.00);

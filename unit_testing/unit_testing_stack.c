@@ -16,6 +16,8 @@ void main() {
 
 	//	Empilha todo o deck padrao (contido em standard_deck.h)
 	stk_stack_deck(&stack);
+	//	Embaralha a stack
+	stk_shuffle(&stack);
 
 	printf("%d cards foram empilhados!\n\n", stk_size_of(stack));
 	//	Loop de esvaziamento

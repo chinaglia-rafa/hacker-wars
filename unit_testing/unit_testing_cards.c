@@ -20,7 +20,11 @@ void main () {
 	struct Card t;
 	crd_print_card(t);
 
-	crd_print_2_cards(hand[0], hand[1]);
+	crd_print_2_cards(hand[0], hand[1], CRD_FULL_CARDS);
+	crd_print_2_cards(hand[0], hand[1], CRD_NAME_ONLY);
+
+	crd_print_3_cards(hand[0], hand[1], hand[2], CRD_FULL_CARDS);
+	crd_print_3_cards(hand[0], hand[1], hand[2], CRD_NAME_ONLY);
 
 	//	Convertendo ints em strings (labels) e buscando valor de caracteristica no card
 	printf("\nO %s do primeiro card na mao do jogador e %.0f.", hlp_label_at_pos(1, FORMAT_LOWER), crd_get_value_at(hand[0], 1));
