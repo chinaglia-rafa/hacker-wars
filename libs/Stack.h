@@ -110,24 +110,6 @@ short stk_is_empty(struct Stack stack) {
 }
 
 /**
-**    Conta o numero de elementos na pilha
-**    @param struct Stack: pilha a ser analisada
-**
-** 	  @return int: Numero de elementos na pilha
-**
-**    @author Rafael Chinaglia <chinaglia.rafa@gmail.com>
-*/
-int stk_size_of(struct Stack stack) {
-	int i = 0;
-	struct Item* current_item = stack.top;
-	while (current_item != NULL){
-		i++;
-		current_item = current_item->next;
-	}
-	return i;
-}
-
-/**
 **    Empilha todo o baralho conhecido usando standard_deck.h
 **	  provavelmente em ordem.
 **    @param struct Stack*: ponteiro para a pilha
