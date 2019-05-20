@@ -1,16 +1,18 @@
 #include <stdio.h>
 #include <locale.h>
 #include "../libs/Cards.h"
-#include "../libs/Stack.h"
-#include "../libs/Player.h"
 #include "../libs/Helper.h"
+#include "../libs/Stack.h"
+#include "../libs/Queue.h"
+#include "../libs/Player.h"
 
 void main () {
 	setlocale(LC_ALL, "");
 
   srand(time(NULL));
 
-  while (1) {
+  struct Queue queue = qeu_make_queue();
+  while (qeu_count(queue) < 3) {
     system("cls");
 
     struct Player players[2] = {plr_make_player("Rafa") , plr_make_player("Marcelo")};
@@ -34,13 +36,10 @@ void main () {
     struct Card p1_choice = players[0].cards_in_hand[p1_chosen_card - 1];
     struct Card p2_choice = players[1].cards_in_hand[p2_chosen_card - 1];
     crd_print_2_cards(p1_choice, p2_choice, CRD_FULL_CARDS);
-    if (plr_duel(crd_get_value_at(p1_choice, opt), crd_get_value_at(p2_choice, opt)) == 0)
-       printf("JOGADOR 1 VENCEU");
-    else if (plr_duel(crd_get_value_at(p1_choice, opt), crd_get_value_at(p2_choice, opt)) == 1)
-      printf("JOGADOR 2 VENCEU");
-    else
-      printf("EMPAAAAAAATE");
+    qeu_push(crd_get_value_at(p1_choice, opt), crd_get_value_at(p2_choice, opt), opt, &queue);
 
     system("pause");
   }
+
+  while (qeu_pop(&queue) != -1);
 }
