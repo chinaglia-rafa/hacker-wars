@@ -248,6 +248,33 @@ void crd_print_3_cards(struct Card card1, struct Card card2, struct Card card3, 
 }
 
 /**
+**    Imprime um valor float formatado de acordo com a caracteristica
+**    @param float value : valor a ser formatado
+**    @param int caracteristica: caracteristica para formatar
+**
+**    @author Rafael Chinaglia <chinaglia.rafa@gmail.com>
+*/
+void crd_print_formatted_value_at(float value, int pos) {
+	switch (pos) {
+		case 1:
+		  printf("%3.0f%%", value);
+			break;
+		case 2:
+			printf("%3.0f%%", value);
+			break;
+		case 3:
+			printf("%2.1f", value);
+			break;
+		case 4:
+			printf("%4.0f Tb", value);
+			break;
+		case 5:
+			printf("%3.0f%%", value);
+			break;
+	}
+}
+
+/**
 **    Retorna o valor da caracteristica na posicao escolhida
 **    @param struct Card: card escolhido
 **    @param int pos: posicao da característica escolhida no card [1, 5]

@@ -60,7 +60,7 @@ void qeu_push(float value_p1, float value_p2, int opt, struct Queue* queue) {
   new_duel->value_p2 = value_p2;
   new_duel->opt = opt;
 
-  if (queue->top == NULL) {
+  if (queue->bottom == NULL) {
     queue->top = new_duel;
     queue->bottom = new_duel;
     new_duel->next = NULL;
@@ -85,7 +85,7 @@ void qeu_push(float value_p1, float value_p2, int opt, struct Queue* queue) {
 **    @author Rafael Chinaglia <chinaglia.rafa@gmail.com>
 */
 short qeu_is_empty(struct Queue queue) {
-	return queue.top == NULL || queue.bottom == NULL;
+	return queue.bottom == NULL;
 }
 
 
@@ -99,10 +99,10 @@ short qeu_is_empty(struct Queue queue) {
 */
 int qeu_count(struct Queue queue) {
 	int i = 0;
-	struct Duel* current_item = queue.top;
+	struct Duel* current_item = queue.bottom;
 	while (current_item != NULL){
 		i++;
-		current_item = current_item->next;
+		current_item = current_item->prev;
 	}
 	return i;
 }
@@ -112,33 +112,24 @@ int qeu_count(struct Queue queue) {
 **    Resolve o duelo no comeco da fila
 **    @param struct* Queue: ponteiro para a fila de onde o duelo sera resolvido
 **
-** 	  @return int Vencedor: numero do jogador vencedor
+** 	  @return struct Duel: Duelo resolvido
 **
 **    @author Rafael Chinaglia <chinaglia.rafa@gmail.com>
 */
-int qeu_pop(struct Queue* queue) {
+struct Duel qeu_pop(struct Queue* queue) {
 	if (queue == NULL || qeu_is_empty(*queue))
-		return -1;
+		return;
 
   //  Guarda quem e o duelo no comeco da fila
 	struct Duel* duel_on_bottom = queue->bottom;
-  // 0 para EMPATE, 1 para P1 vencedor, 2 para P2 vencedor
-  int winner = 0;
-  if (duel_on_bottom->value_p1 > duel_on_bottom->value_p2)
-    winner = 1;
-  else if (duel_on_bottom->value_p1 < duel_on_bottom->value_p2)
-    winner = 2;
-    
-  if (winner == 0)
-    printf("Houve empate de %s! Ninguem ganha pontos.\n", hlp_label_at_pos(duel_on_bottom->opt, FORMAT_CAP));
-  else
-    printf("Jogador %d venceu um duelo de %s!\n", winner, hlp_label_at_pos(duel_on_bottom->opt, FORMAT_CAP));
+  struct Duel bkp_duel = *duel_on_bottom;
 
   // Remove o item do comeco da fila
   queue->bottom = duel_on_bottom->prev;
-  queue->bottom->next = NULL;
+  if (queue->bottom != NULL)
+    queue->bottom->next = NULL;
 
   free(duel_on_bottom);
 
-  return winner;
+  return bkp_duel;
 }
