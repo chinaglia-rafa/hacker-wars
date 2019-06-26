@@ -72,6 +72,8 @@ void main () {
 				printf("\n%s, escolha agora a CARTA que deseja jogar [1,3]: ", players[turn].player_name);
 				while (opt < 1 || opt > 3) {
 					opt = (getch() - '1') + 1;
+					if (plr_count_cards_in_hand(players[turn]) < opt)
+						opt = -1;
 					//	O -45 correndo ao caractere de abortar a execucao do programa
 					if (opt == -45) exit(0);
 				}
