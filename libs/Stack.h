@@ -5,7 +5,7 @@
 */
 
 #include <stdlib.h>
-#include "standard_deck.h"
+#include "standard_deck_Pt.h"
 
 //	Struct que representa cada elemento da pilha.
 //	Dentro de cada um destes elementos Item, havera
